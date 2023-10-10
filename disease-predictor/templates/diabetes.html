@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<div class="container">
+    <div class="display-4 my-2 text-center">Diabetes Disease Prediction</div>
+    <hr />
+    {% if result %}
+    <div class="h5 my-2 text-center">
+        You {{ result }} diabetes disease.
+        <br> {% if result == "have" %}
+    <p>
+      so you have to contact the hospital, we are giving best hospital for your treatment  <a href="{% url 'hospital' %}">Click Here</a> for hospital
+    </p>
+    {% endif %}
+    </div>
+    {% endif %}
+
+
+    <div class="col-md-4">
+        <form class="" method="POST" action="{% url 'diabetes' %}">
+            {% csrf_token %}
+            {{form}}
+            <div class="mt-4">
+                <button type="submit" class="btn-lg btn-block btn btn-outline-danger mb-5">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

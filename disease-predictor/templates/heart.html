@@ -1,0 +1,33 @@
+{%extends 'base.html'%} 
+
+{%block content%}
+
+<div class="container">
+    <div class="display-4 my-2 text-center">Heart Disease Prediction</div>
+    <hr />
+    {% if context %}
+    <div class="h5 my-2 text-center">
+        You {{ context }} heart disease.
+    <br> {% if context == "have" %}
+    <p>
+      so you can look here for the hospital for your treatment  <a href="{% url 'hospital' %}">Click Here</a> for hospital
+    </p>
+    {% endif %}
+    </div>
+    {% endif %}
+
+ 
+    <div class="col-md-4">
+        <form class="" method="POST" action="{% url 'heart' %}">
+            {% csrf_token %}
+            {{form}}
+            <div class="mt-4">
+                <button type="submit" class="btn-lg btn-block btn btn-outline-danger mb-5">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
